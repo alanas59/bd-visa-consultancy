@@ -91,8 +91,8 @@ const Login = () => {
           </button>
         )}
       </form>
-      <p>{error1 && error1.message}</p>
-      <p>{error2 && error2.message}</p>
+      <p className="text-danger">{error1 && error1.message}</p>
+      <p className="text-danger">{error2 && error2.message}</p>
     </div>
   );
 };
