@@ -75,17 +75,16 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary mb-2">
+        <button type="submit" className="btn btn-primary">
           Login
         </button>
       </form>
+     <p className="text-danger my-2">{error1 && error1.message}</p>
       <Link onClick={handlePasswordReset} to="" className="text-primary">
         Forget Password?
       </Link>
 
-      <p className="text-danger mt-3">{error1 && error1.message}</p>
-
-      <p className="">
+      <p className="mt-2">
         New to BD Visa?
         <Link className="ms-1" to="/register">
           Please Register

@@ -36,6 +36,54 @@ const Blog = () => {
           set by the organization.
         </li>
       </ul>
+      {/* 
+       question no.2 
+      */}
+      <h2> Why are you using firebase?</h2>
+      <p>
+        Firebase is a set of tools offered by Google to build excellent scalable
+        applications in the cloud. It is a powerful service that helps in
+        building applications quickly without reinventing the components or
+        modules. Services like analytics, authentication, databases,
+        configuration, file storage, push messaging are provided by firebase
+        thereby making it easy for the developers to focus on the user
+        experience of the application.
+      </p>
+      {/* 
+       question no.3 
+      */}
+      <h2>What other options do you have to implement authentication?</h2>
+      <ul>
+        <li>
+          Password-based authentication. Passwords are the most common methods
+          of authentication.
+        </li>
+        <li>Multi-factor authentication</li>
+        <li>Certificate-based authentication.</li>
+        <li>Biometric authentication. </li>
+        <li>Token-based authentication.</li>
+      </ul>
+      {/* 
+         question no.4 
+      */}
+      <h2>
+        What other services does firebase provide other than authentication
+      </h2>
+      <p>
+        There are many services which Firebase provides, Most useful of them are:
+      </p>
+      <ul>
+        <li>Cloud Firestore</li>
+        <li>Cloud Functions</li>
+        <li>Authentication</li>
+        <li>Hosting</li>
+        <li>Cloud Storage</li>
+        <li>Google Analytics</li>
+        <li>Predictions</li>
+        <li>Cloud Messaging</li>
+        <li>Dynamic Links</li>
+        <li>Remote Config</li>
+      </ul>
     </div>
   );
 };
