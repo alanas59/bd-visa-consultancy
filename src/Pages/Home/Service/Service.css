@@ -1,0 +1,11 @@
+.card{
+    padding-left: 0px;
+    padding-right: 0px;
+}
+
+/* media query */
+@media only screen and (max-width:688px) {
+    .card{
+        margin: 0 auto;
+    }
+}

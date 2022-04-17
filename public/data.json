@@ -1,0 +1,23 @@
+[
+    {
+        "id": "1",
+        "name": "Working Visas",
+        "description":"Datat non proident sunt culpa qui officia deserunt mollit anim id est laborum. Sed perspiciatis unde omnis iste.",
+        "price": 600,
+        "picture": "https://i.ibb.co/d2n2DVq/service-1.jpg"  
+    },
+    {
+        "id": "2",
+        "name": "Studing Visas",
+        "description":"Datat non proident sunt culpa qui officia deserunt mollit anim id est laborum. Sed perspiciatis unde omnis iste.",
+        "price": 700,
+        "picture": "https://i.ibb.co/HxGfkDK/service-2.jpg"  
+    },
+    {
+        "id": "3",
+        "name": "Visiting Visa",
+        "description":"Datat non proident sunt culpa qui officia deserunt mollit anim id est laborum. Sed perspiciatis unde omnis iste.",
+        "price": 900,
+        "picture": "https://i.ibb.co/Tr1mWJL/service-3.jpg"  
+    }
+]
