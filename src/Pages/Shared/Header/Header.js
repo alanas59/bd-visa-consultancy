@@ -38,7 +38,7 @@ const Header = () => {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" aria-current="page" to="#">
+                <Link className="nav-link" aria-current="page" to="/login">
                   Signin
                 </Link>
               </li>
