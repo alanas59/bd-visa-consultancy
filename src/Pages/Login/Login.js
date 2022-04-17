@@ -1,19 +1,28 @@
 import React, { useState } from "react";
 import {
   useCreateUserWithEmailAndPassword,
+  useSendPasswordResetEmail,
   useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
 } from "react-firebase-hooks/auth";
 import { useNavigate } from "react-router-dom";
-
+import { toast, ToastContainer } from "react-toastify";
 import auth from "../../firebase.init";
+import 'react-toastify/dist/ReactToastify.css';
 
 const Login = () => {
   const [check, setCheck] = useState(false);
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
   const [createUserWithEmailAndPassword, user1, loading1, error1] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
   const [signInWithEmailAndPassword, user2, loading2, error2] =
     useSignInWithEmailAndPassword(auth);
+
+  const [sendPasswordResetEmail] = useSendPasswordResetEmail(auth);
+
+  const [signInWithGoogle, user3, loading3, error3] = useSignInWithGoogle(auth);
 
   const navigate = useNavigate();
 
@@ -21,21 +30,23 @@ const Login = () => {
     setCheck(!check);
   };
 
-   if(user2){
-      navigate('/home');
-   }
+  if (user2 || user3) {
+    navigate("/home");
+  }
 
+  const handleResetPassword = async () => {
+      await sendPasswordResetEmail(email);
+      toast("Email is sent");
+  };
 
   const handleFormSubmit = (event) => {
-    const email = event.target.email.value;
-    const password = event.target.password.value;
-    console.log(email, password);
+    setEmail(event.target.email.value);
+    setPassword(event.target.password.value);
 
     if (!check) {
       createUserWithEmailAndPassword(email, password);
-    } 
-    else {
-      signInWithEmailAndPassword(email, password)
+    } else {
+      signInWithEmailAndPassword(email, password);
     }
 
     event.preventDefault();
@@ -43,6 +54,7 @@ const Login = () => {
 
   return (
     <div className="w-50 mx-auto my-5 border p-4">
+      
       <h2>Please {check ? "Login" : "Registration"}</h2>
       <form onSubmit={handleFormSubmit}>
         <div className="mb-3">
@@ -91,8 +103,26 @@ const Login = () => {
           </button>
         )}
       </form>
-      <p className="text-danger">{error1 && error1.message}</p>
+
+     {
+      check?
+       <p
+        onClick={handleResetPassword}
+        className="mt-2 text-primary text-decoration-underline"
+       >
+        Forget password?
+      </p> : ''
+      }
+      <p className="text-danger my-3">{error1 && error1.message}</p>
       <p className="text-danger">{error2 && error2.message}</p>
+      
+      <ToastContainer></ToastContainer>
+      <div>
+         <button 
+         onClick={()=>signInWithGoogle()}
+         className="btn btn-success w-50 d-block mx-auto p-2">Google sign in</button>
+         <p className="text-danger text-center mt-3">{error3 && error3.message}</p>
+      </div>
     </div>
   );
 };

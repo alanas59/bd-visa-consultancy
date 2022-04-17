@@ -47,7 +47,7 @@ const Header = () => {
               <li className="nav-item">
               {  !user?
                 <Link className="nav-link" aria-current="page" to="/login">
-                  Signin
+                  Login
                 </Link>
                 :
                 <button 
