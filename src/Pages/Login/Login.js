@@ -14,6 +14,7 @@ const Login = () => {
   const [check, setCheck] = useState(false);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+
   const [createUserWithEmailAndPassword, user1, loading1, error1] =
     useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
@@ -30,10 +31,19 @@ const Login = () => {
     setCheck(!check);
   };
 
+  if(loading1 || loading2)
+  {
+    return <h2>loading...</h2>
+  }
+
+  if(user1){
+    setCheck(!check);
+  }
   if (user2 || user3) {
     navigate("/home");
   }
 
+ 
   const handleResetPassword = async () => {
       await sendPasswordResetEmail(email);
       toast("Email is sent");
@@ -84,7 +94,7 @@ const Login = () => {
         </div>
         <div className="mb-3 form-check">
           <input
-            onClick={handleCheck}
+        
             type="checkbox"
             className="form-check-input"
             id="exampleCheck1"
@@ -113,7 +123,7 @@ const Login = () => {
         Forget password?
       </p> : ''
       }
-      <p className="text-danger my-3">{error1 && error1.message}</p>
+      <p className="text-primary my-3">{error1 && error1.message}</p>
       <p className="text-danger">{error2 && error2.message}</p>
       
       <ToastContainer></ToastContainer>
