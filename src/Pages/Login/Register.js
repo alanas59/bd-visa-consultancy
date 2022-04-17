@@ -13,7 +13,7 @@ const Register = () => {
   const navigate = useNavigate();
 
   if(user){
-     navigate('/login');
+     navigate('/home');
   }
 
   const handleFormSubmit = (event) =>{
@@ -55,11 +55,11 @@ const Register = () => {
         </div>
 
         <button type="submit" className="btn btn-primary">
-          Registration
+          Register
         </button>
       </form>
       <p className="mt-2">
-        Already have an account?<Link to="/login">Please login</Link>
+        Already have an account?<Link className="ms-1" to="/login">Please Login</Link>
       </p>
     </div>
   );
