@@ -118,6 +118,11 @@ const Login = () => {
       
       <ToastContainer></ToastContainer>
       <div>
+         <div className="d-flex align-items-center">
+           <div className='w-50 bg-primary' style={{height:"2px"}}></div>
+           <p className="px-2 pt-2">or</p>
+           <div className='w-50 bg-primary' style={{height:"2px"}}></div>
+         </div>
          <button 
          onClick={()=>signInWithGoogle()}
          className="btn btn-success w-50 d-block mx-auto p-2">Google sign in</button>
