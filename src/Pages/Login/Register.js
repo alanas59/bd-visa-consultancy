@@ -58,6 +58,11 @@ const Register = () => {
           Register
         </button>
       </form>
+      
+      <p className="text-danger mt-3">
+          {error && error.message}
+      </p>
+
       <p className="mt-2">
         Already have an account?<Link className="ms-1" to="/login">Please Login</Link>
       </p>

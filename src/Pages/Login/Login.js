@@ -4,32 +4,46 @@ import { Link, useNavigate } from "react-router-dom";
 
 import auth from "../../firebase.init";
 import "react-toastify/dist/ReactToastify.css";
-import { useSignInWithEmailAndPassword, useSignInWithGoogle } from "react-firebase-hooks/auth";
+import {
+  useSendPasswordResetEmail,
+  useSignInWithEmailAndPassword,
+  useSignInWithGoogle,
+} from "react-firebase-hooks/auth";
+import { toast, ToastContainer } from "react-toastify";
 
 const Login = () => {
-
-  const emailRef = useRef('');
-  const passwordRef = useRef('');
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
   const navigate = useNavigate();
-  const [
-    signInWithEmailAndPassword,
-    user1,
-    loading1,
-    error1,
-  ] = useSignInWithEmailAndPassword(auth);
+  const [signInWithEmailAndPassword, user1, loading1, error1] =
+    useSignInWithEmailAndPassword(auth);
+
+  const [sendPasswordResetEmail, sending] = useSendPasswordResetEmail(auth);
 
   const [signInWithGoogle, user2, loading2, error2] = useSignInWithGoogle(auth);
 
-  if(user1){
-    navigate('/home');
+  if (user1 || user2) {
+    navigate("/home");
   }
 
-  const handleFormSubmit = event =>{
-      const email = emailRef.current.value;
-      const password = passwordRef.current.value;
-      signInWithEmailAndPassword(email,password);
-      event.preventDefault()
-}
+  const handlePasswordReset = async () => {
+    const email = emailRef.current.value;
+    if(!email){
+      alert('Please give your email!');
+    }
+    else{
+      await sendPasswordResetEmail(email);
+      toast('Sent email');
+    }
+
+  };
+
+  const handleFormSubmit = (event) => {
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+    signInWithEmailAndPassword(email, password);
+    event.preventDefault();
+  };
   return (
     <div className="w-50 mx-auto my-5 border p-4">
       <h2>Please login</h2>
@@ -61,16 +75,21 @@ const Login = () => {
             required
           />
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary mb-2">
           Login
         </button>
       </form>
-      <p className="text-danger mt-3">
-          {error1 && error1.message}
-      </p>
+      <Link onClick={handlePasswordReset} to="" className="text-primary">
+        Forget Password?
+      </Link>
 
-      <p className="mt-2">
-        New to BD Visa?<Link className="ms-1" to="/register">Please Register</Link>
+      <p className="text-danger mt-3">{error1 && error1.message}</p>
+
+      <p className="">
+        New to BD Visa?
+        <Link className="ms-1" to="/register">
+          Please Register
+        </Link>
       </p>
 
       {/* google signin */}
@@ -80,15 +99,17 @@ const Login = () => {
           <p className="px-2 pt-2">or</p>
           <div className="w-50 bg-primary" style={{ height: "2px" }}></div>
         </div>
-        <button 
+        <button
           onClick={() => signInWithGoogle()}
-          className="btn btn-success w-50 d-block mx-auto p-2">
+          className="btn btn-success w-50 d-block mx-auto p-2"
+        >
           Google sign in
         </button>
         <p className="text-danger text-center mt-3">
           {error2 && error2.message}
         </p>
       </div>
+      <ToastContainer></ToastContainer>
     </div>
   );
 };
