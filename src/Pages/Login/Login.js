@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 import auth from "../../firebase.init";
 import "react-toastify/dist/ReactToastify.css";
@@ -15,6 +15,8 @@ const Login = () => {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const navigate = useNavigate();
+  let location = useLocation();
+  let from = location.state?.from?.pathname || "/";
   const [signInWithEmailAndPassword, user1, loading1, error1] =
     useSignInWithEmailAndPassword(auth);
 
@@ -23,7 +25,7 @@ const Login = () => {
   const [signInWithGoogle, user2, loading2, error2] = useSignInWithGoogle(auth);
 
   if (user1 || user2) {
-    navigate("/home");
+    navigate(from, { replace: true });
   }
 
   const handlePasswordReset = async () => {

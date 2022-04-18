@@ -18,7 +18,7 @@ const Service = (props) => {
         <h5 className="card-title">{name}</h5>
         <p className="card-text">{description}</p>
         <h2>${price}</h2>
-        <button onClick={handleCheckout} className="btn btn-primary mt-2">Go somewhere</button>
+        <button onClick={handleCheckout} className="btn btn-primary mt-2">Book Now</button>
       </div>
     </div>
   );
