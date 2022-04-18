@@ -15,9 +15,9 @@ const Header = () => {
   return (
     <>
       <nav className="navbar navbar-expand-lg navbar-dark bg-primary py-3 px-4">
-        <div className="container-fluid">
+        <div className="container">
           <Link className="navbar-brand" to="/">
-            BD Visa
+            BD Visa Consultancy
           </Link>
           <button
             className="navbar-toggler"

@@ -4,7 +4,7 @@ import extra from '../../../images/extra.jpg';
 
 const Extra = () => {
     return (
-        <div className='container' style={{marginTop:'80px',marginBottom:'80px'}}>
+        <div className='container' style={{marginTop:'50px',marginBottom:'80px'}}>
             <h2 className='text-center text-primary m-5'>Visa & Immigration</h2>
             <div className="row">
                 <div className="col-lg-6 px-3 mb-5">
