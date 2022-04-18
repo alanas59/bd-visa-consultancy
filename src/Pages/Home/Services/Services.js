@@ -10,7 +10,7 @@ const Services = () => {
   }, []);
   return (
     <div className="container my-5">
-      <h2 className="text-center my-4 text-primary">Immigration & Visa Services</h2>
+      <h2 className="text-center my-4 text-primary">My Visa Services</h2>
       <div className="row justify-content-between">
         {services.map((service) => (
           <Service key={service.id} service={service}></Service>
