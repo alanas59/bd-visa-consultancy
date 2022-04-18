@@ -87,7 +87,7 @@ const Login = () => {
       </Link>
 
       <p className="mt-2">
-        New to BD Visa?
+        Are you new to BD Visa?
         <Link className="ms-1" to="/register">
           Please Register
         </Link>

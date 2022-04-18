@@ -9,7 +9,7 @@ const Services = () => {
       .then((data) => setServices(data));
   }, []);
   return (
-    <div className="container my-5">
+    <div className="container" style={{marginTop:'50px'}}>
       <h2 className="text-center my-4 text-primary">My Visa Services</h2>
       <div className="row justify-content-between">
         {services.map((service) => (
